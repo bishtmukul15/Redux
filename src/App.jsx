@@ -1,12 +1,13 @@
+// src/App.jsx
 import React from "react";
-import Counter from "./Components/Counter";
+import { useSelector } from "react-redux";
+import Login from "./components/Login";
+import Home from "./components/Home";
 
 const App = () => {
-  return (
-    <div>
-      <Counter />
-    </div>
-  );
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+
+  return <>{!isAuth ? <Login /> : <Home />}</>;
 };
 
 export default App;
